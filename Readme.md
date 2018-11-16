@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Igor Pechenkin](https://up.htmlacademy.ru/javascript/16/user/519921).
-* Наставник: `Неизвестно`.
+* Наставник: [Магомед Кандаев](https://up.htmlacademy.ru/javascript/16/user/161600).
 
 ---
 
