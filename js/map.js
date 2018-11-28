@@ -94,18 +94,22 @@ var generateOffersArray = function () {
 
   for (var i = 0; i < 8; i++) {
     adverts[i] = {
-      avatar: 'img/avatars/user0' + getRandomInteger(0, 8) + '.png',
-      title: getRandomElement(OFFERS_TITLES),
-      address: locationX + ', ' + locationY,
-      price: getRandomInteger(OFFERS_PRICES.min, OFFERS_PRICES.max),
-      type: getRandomElement(OFFERS_TYPES),
-      rooms: getRandomInteger(OFFERS_ROOMS.min, OFFERS_ROOMS.max),
-      guests: getRandomInteger(OFFERS_GUESTS.min, OFFERS_GUESTS.max),
-      checkin: getRandomElement(OFFERS_CHECKIN_TIMES),
-      checkout: getRandomElement(OFFERS_CHECKOUT_TIMES),
-      features: getRandomElement(OFFERS_FEATURES),
-      description: '',
-      photos: OFFERS_PHOTOS,
+      author: {
+        avatar: 'img/avatars/user0' + getRandomInteger(0, 8) + '.png'
+      },
+      offer: {
+        title: getRandomElement(OFFERS_TITLES),
+        address: locationX + ', ' + locationY,
+        price: getRandomInteger(OFFERS_PRICES.min, OFFERS_PRICES.max),
+        type: getRandomElement(OFFERS_TYPES),
+        rooms: getRandomInteger(OFFERS_ROOMS.min, OFFERS_ROOMS.max),
+        guests: getRandomInteger(OFFERS_GUESTS.min, OFFERS_GUESTS.max),
+        checkin: getRandomElement(OFFERS_CHECKIN_TIMES),
+        checkout: getRandomElement(OFFERS_CHECKOUT_TIMES),
+        features: getRandomElement(OFFERS_FEATURES),
+        description: '',
+        photos: OFFERS_PHOTOS
+      },
       location: {
         x: locationX,
         y: locationY
