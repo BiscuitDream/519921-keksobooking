@@ -89,12 +89,14 @@ var shuffleArray = function (array) {
 
 var generateOffersArray = function () {
   var adverts = [];
+  var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
+  var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
   for (var i = 0; i < 8; i++) {
     adverts[i] = {
       avatar: 'img/avatars/user0' + getRandomInteger(0, 8) + '.png',
       title: getRandomElement(OFFERS_TITLES),
-      address: '',
+      address: locationX + ', ' + locationY,
       price: getRandomInteger(OFFERS_PRICES.min, OFFERS_PRICES.max),
       type: getRandomElement(OFFERS_TYPES),
       rooms: getRandomInteger(OFFERS_ROOMS.min, OFFERS_ROOMS.max),
@@ -105,8 +107,8 @@ var generateOffersArray = function () {
       description: '',
       photos: OFFERS_PHOTOS,
       location: {
-        x: getRandomInteger(OFFERS_X.min, OFFERS_X.max),
-        y: getRandomInteger(OFFERS_Y.min, OFFERS_Y.max)
+        x: locationX,
+        y: locationY
       }
     };
   }
