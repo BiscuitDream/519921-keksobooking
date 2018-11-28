@@ -120,6 +120,23 @@ var generateOffersArray = function () {
   return adverts;
 };
 
-var ar = generateOffersArray();
+var mapPinTemplate = document.querySelector('#pin')
+    .content
+    .querySelector('.map__pin');
+
+var createPin = function (advertItem) {
+  var pinItem = mapPinTemplate.cloneNode(true);
+
+  pinItem.style.left = advertItem.location.x + 'px';
+  pinItem.style.top = advertItem.location.y + 'px';
+  pinItem.querySelector('img').src = advertItem.author.avatar;
+  pinItem.querySelector('img').alt = advertItem.offer.title;
+
+  return pinItem;
+};
+
+var adverts = generateOffersArray();
+
+createPin(adverts[1]);
 
 document.querySelector('.map').classList.remove('map--faded');
