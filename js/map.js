@@ -122,5 +122,4 @@ var generateOffersArray = function () {
 
 var ar = generateOffersArray();
 
-
-// document.querySelector('.map').classList.remove('map--faded');
+document.querySelector('.map').classList.remove('map--faded');
