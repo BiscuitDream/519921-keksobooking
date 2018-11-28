@@ -66,8 +66,8 @@ var OFFERS_Y = {
 };
 
 var OFFERS_X = {
-  min: 130,
-  max: 630
+  min: 0,
+  max: document.querySelector('.map').clientWidth
 };
 
 
