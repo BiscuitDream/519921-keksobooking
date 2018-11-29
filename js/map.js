@@ -89,13 +89,14 @@ var shuffleArray = function (array) {
 
 var generateOffersArray = function () {
   var adverts = [];
-  var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
-  var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
   for (var i = 0; i < 8; i++) {
+    var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
+    var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
+
     adverts[i] = {
       author: {
-        avatar: 'img/avatars/user0' + getRandomInteger(0, 8) + '.png'
+        avatar: 'img/avatars/user0' + getRandomInteger(1, 8) + '.png'
       },
       offer: {
         title: getRandomElement(OFFERS_TITLES),
@@ -119,12 +120,11 @@ var generateOffersArray = function () {
 
   return adverts;
 };
-
-var mapPinTemplate = document.querySelector('#pin')
+// Необходимо подкорректировать размеры
+var createPin = function (advertItem) {
+  var mapPinTemplate = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
-
-var createPin = function (advertItem) {
   var pinItem = mapPinTemplate.cloneNode(true);
 
   pinItem.style.left = advertItem.location.x + 'px';
@@ -135,8 +135,23 @@ var createPin = function (advertItem) {
   return pinItem;
 };
 
+var renderPins = function (advertsArray) {
+  var mapPins = document.querySelector('.map__pins');
+  var fragment = document.createDocumentFragment();
+
+  advertsArray.forEach(function (item) {
+    fragment.appendChild(createPin(item));
+  });
+
+  mapPins.appendChild(fragment);
+};
+
 var adverts = generateOffersArray();
 
-createPin(adverts[1]);
+renderPins(adverts);
+
+// createPin(adverts[1]);
+
+// map__pins
 
 document.querySelector('.map').classList.remove('map--faded');
