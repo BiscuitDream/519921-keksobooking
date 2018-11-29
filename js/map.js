@@ -195,11 +195,11 @@ var renderCard = function (advertItem) {
 
   card.querySelector('.popup__avatar').src = advertItem.author.avatar;
   card.querySelector('.popup__title').textContent = advertItem.offer.title;
-  // card.querySelector('popup__text--address').textContent = advertItem.offer.address;
+  card.querySelector('.popup__text--address').textContent = advertItem.offer.address;
   card.querySelector('.popup__text--price').textContent = advertItem.offer.price + '₽/ночь';
   card.querySelector('.popup__type').textContent = advertItem.offer.type;
   card.querySelector('.popup__text--capacity').textContent = advertItem.offer.rooms + ' комнаты для ' + advertItem.offer.guests + ' гостей';
-  card.querySelector('.popup__text--time').textContent = 'Заезд после '+ advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
+  card.querySelector('.popup__text--time').textContent = 'Заезд после ' + advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
   // card.querySelector('.popup__features')
   card.querySelector('.popup__description').textContent = advertItem.offer.description;
   card.querySelector('.popup__photos').replaceChild(createPhotos(advertItem.offer.photos), card.querySelector('.popup__photos').querySelector('.popup__photo'));
@@ -208,15 +208,7 @@ var renderCard = function (advertItem) {
 };
 
 map.classList.remove('map--faded');
-
 var adverts = generateOffersArray();
-
 renderPins(adverts);
 var card = renderCard(adverts[0]);
-
 map.insertBefore(card, map.querySelector('.map__filters-container'));
-
-// createPin(adverts[1]);
-
-// map__pins
-
