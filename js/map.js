@@ -150,12 +150,20 @@ var createPin = function (advertItem) {
   var mapPinTemplate = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
+  console.log(mapPinTemplate);
   var pinItem = mapPinTemplate.cloneNode(true);
+  var xOffset = pinItem.offsetWidth / 2;
+  console.log(xOffset);
+  var yOffset = pinItem.offsetHeight / 2;
+  console.log(yOffset);
 
-  pinItem.style.left = advertItem.location.x + 'px';
-  pinItem.style.top = advertItem.location.y + 'px';
+  pinItem.style.left = advertItem.location.x - xOffset + 'px';
+  pinItem.style.top = advertItem.location.y - yOffset + 'px';
   pinItem.querySelector('img').src = advertItem.author.avatar;
   pinItem.querySelector('img').alt = advertItem.offer.title;
+
+  console.log('x=' + advertItem.location.x + '; y=' + advertItem.location.y);
+  console.log('offsetX= ' + pinItem.style.left + '; offsetY=' + pinItem.style.top);
 
   return pinItem;
 };
