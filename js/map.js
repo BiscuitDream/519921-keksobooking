@@ -142,7 +142,8 @@ var generateOffersArray = function () {
         guests: getRandomInteger(OFFERS_GUESTS.min, OFFERS_GUESTS.max),
         checkin: getRandomElement(OFFERS_CHECKIN_TIMES),
         checkout: getRandomElement(OFFERS_CHECKOUT_TIMES),
-        features: getRandomElement(OFFERS_FEATURES),
+        // копируем массив удобств, перемешиваем, возвращаем копию массива со случайной длиной
+        features: shuffleArray(OFFERS_FEATURES.slice()).slice(0, getRandomInteger(1, OFFERS_FEATURES.length)),
         description: '',
         photos: offersPhotos
       },
