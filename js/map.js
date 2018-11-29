@@ -70,6 +70,8 @@ var OFFERS_X = {
   max: document.querySelector('.map').clientWidth
 };
 
+var OFFERS_TOTAL = 8;
+
 var map = document.querySelector('.map');
 
 var getRandomIndex = function (array) {
@@ -98,19 +100,32 @@ var shuffleArray = function (array) {
   return array;
 };
 
+var getRandomAvatar = function () {
+  var avatars = [];
+
+  for (var i = 1; i <= OFFERS_TOTAL; i++) {
+    avatars[i - 1] = 'img/avatars/user0' + i + '.png';
+  }
+
+  return shuffleArray(avatars);
+};
+
 var generateOffersArray = function () {
+  OFFERS_TITLES = shuffleArray(OFFERS_TITLES);
+  var avatarAdresses = getRandomAvatar();
   var adverts = [];
 
   for (var i = 0; i < 8; i++) {
+    OFFERS_PHOTOS = shuffleArray(OFFERS_PHOTOS);
     var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
     var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
     adverts[i] = {
       author: {
-        avatar: 'img/avatars/user0' + getRandomInteger(1, 8) + '.png'
+        avatar: avatarAdresses[i]
       },
       offer: {
-        title: getRandomElement(OFFERS_TITLES),
+        title: OFFERS_TITLES[i],
         address: locationX + ', ' + locationY,
         price: getRandomInteger(OFFERS_PRICES.min, OFFERS_PRICES.max),
         type: getRandomElement(OFFERS_TYPES),
