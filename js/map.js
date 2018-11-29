@@ -137,18 +137,54 @@ var createPin = function (advertItem) {
 
 var renderPins = function (advertsArray) {
   var mapPins = document.querySelector('.map__pins');
-  var fragment = document.createDocumentFragment();
+  var pinsFragment = document.createDocumentFragment();
 
   advertsArray.forEach(function (item) {
-    fragment.appendChild(createPin(item));
+    pinsFragment.appendChild(createPin(item));
   });
 
-  mapPins.appendChild(fragment);
+  mapPins.appendChild(pinsFragment);
+};
+
+var createPhotos = function (photos) {
+  var photosFragment = document.createDocumentFragment();
+  var photosTemplate = document.querySelector('#card')
+    .content
+    .querySelector('.popup__photos');
+
+  for (var i = 0; i < photos.length; i++) {
+    var photosElement = photosTemplate.cloneNode(true);
+    photosElement.querySelector('.popup__photo').src = photos[i];
+    photosFragment.appendChild(photosElement);
+  }
+
+  return photosFragment;
+};
+
+var renderCard = function (advertItem) {
+  var cardTemplate = document.querySelector('#card')
+      .content
+      .querySelector('.map__card');
+  var card = cardTemplate.cloneNode(true);
+
+  card.querySelector('.popup__avatar').src = advertItem.author.avatar;
+  card.querySelector('.popup__title').textContent = advertItem.offer.title;
+  // card.querySelector('popup__text--address').textContent = advertItem.offer.address;
+  card.querySelector('.popup__text--price').textContent = advertItem.offer.price + '&#x20bd/ночь';
+  card.querySelector('.popup__type').textContent = advertItem.offer.type;
+  card.querySelector('.popup__text--capacity').textContent = advertItem.offer.rooms + ' комнаты для ' + advertItem.offer.guests + ' гостей';
+  card.querySelector('.popup__text--time').textContent = 'Заезд после '+ advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
+  // card.querySelector('.popup__features')
+  card.querySelector('.popup__description').textContent = advertItem.offer.description;
+  card.querySelector('.popup__photos').appendChild(createPhotos(advertItem.offer.photos));
+
+  return card;
 };
 
 var adverts = generateOffersArray();
 
 renderPins(adverts);
+var card = renderCard(adverts[0]);
 
 // createPin(adverts[1]);
 
