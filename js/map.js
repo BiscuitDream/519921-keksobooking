@@ -121,7 +121,7 @@ var getRandomAvatar = function () {
 
 var generateOffersArray = function () {
   var offersTitles = shuffleArray(OFFERS_TITLES.slice());
-  var avatarAdresses = getRandomAvatar();
+  var avatarAddresses = getRandomAvatar();
   var adverts = [];
 
   for (var i = 0; i < 8; i++) {
@@ -131,7 +131,7 @@ var generateOffersArray = function () {
 
     adverts[i] = {
       author: {
-        avatar: avatarAdresses[i]
+        avatar: avatarAddresses[i]
       },
       offer: {
         title: offersTitles[i],
