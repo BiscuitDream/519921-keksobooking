@@ -103,8 +103,8 @@ var shuffleArray = function (array) {
 var getRandomAvatar = function () {
   var avatars = [];
 
-  for (var i = 1; i <= OFFERS_TOTAL; i++) {
-    avatars[i - 1] = 'img/avatars/user0' + i + '.png';
+  for (var i = 0; i < OFFERS_TOTAL; i++) {
+    avatars[i] = 'img/avatars/user0' + (i + 1) + '.png';
   }
 
   return shuffleArray(avatars);
