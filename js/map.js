@@ -151,11 +151,11 @@ var createPhotos = function (photos) {
   var photosFragment = document.createDocumentFragment();
   var photosTemplate = document.querySelector('#card')
     .content
-    .querySelector('.popup__photos');
+    .querySelector('.popup__photo');
 
   for (var i = 0; i < photos.length; i++) {
     var photosElement = photosTemplate.cloneNode(true);
-    photosElement.querySelector('.popup__photo').src = photos[i];
+    photosElement.src = photos[i];
     photosFragment.appendChild(photosElement);
   }
 
@@ -177,7 +177,7 @@ var renderCard = function (advertItem) {
   card.querySelector('.popup__text--time').textContent = 'Заезд после '+ advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
   // card.querySelector('.popup__features')
   card.querySelector('.popup__description').textContent = advertItem.offer.description;
-  card.querySelector('.popup__photos').appendChild(createPhotos(advertItem.offer.photos));
+  card.querySelector('.popup__photos').replaceChild(createPhotos(advertItem.offer.photos), card.querySelector('.popup__photos').querySelector('.popup__photo'));
 
   return card;
 };
