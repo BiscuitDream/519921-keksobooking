@@ -70,6 +70,7 @@ var OFFERS_X = {
   max: document.querySelector('.map').clientWidth
 };
 
+var map = document.querySelector('.map');
 
 var getRandomIndex = function (array) {
   return Math.floor(Math.random() * array.length);
@@ -181,13 +182,16 @@ var renderCard = function (advertItem) {
   return card;
 };
 
+map.classList.remove('map--faded');
+
 var adverts = generateOffersArray();
 
 renderPins(adverts);
 var card = renderCard(adverts[0]);
 
+map.insertBefore(card, map.querySelector('.map__filters-container'));
+
 // createPin(adverts[1]);
 
 // map__pins
 
-document.querySelector('.map').classList.remove('map--faded');
