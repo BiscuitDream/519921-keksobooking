@@ -125,7 +125,7 @@ var generateOffersArray = function () {
   var adverts = [];
 
   for (var i = 0; i < 8; i++) {
-    var offersPhotos =  shuffleArray(OFFERS_PHOTOS.slice());
+    var offersPhotos = shuffleArray(OFFERS_PHOTOS.slice());
     var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
     var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
@@ -166,9 +166,6 @@ var createPin = function (advertItem) {
   pinItem.style.top = advertItem.location.y - PIN_HEIGHT + 'px';
   pinItem.querySelector('img').src = advertItem.author.avatar;
   pinItem.querySelector('img').alt = advertItem.offer.title;
-
-  console.log('x=' + advertItem.location.x + '; y=' + advertItem.location.y);
-  console.log('offsetX= ' + pinItem.style.left + '; offsetY=' + pinItem.style.top);
 
   return pinItem;
 };
