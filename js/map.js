@@ -87,14 +87,11 @@ var getRandomInteger = function (min, max) {
 };
 
 var shuffleArray = function (array) {
-  var temp;
-  var index;
-
   for (var i = 0; i < array.length; i++) {
-    index = Math.floor(Math.random() * (array.length - i)) + i;
-    temp = array[i];
-    array[i] = array[index];
-    array[index] = temp;
+    var j = Math.floor(Math.random() * (array.length - i)) + i;
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 
   return array;
