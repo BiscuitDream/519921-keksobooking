@@ -18,6 +18,13 @@ var OFFERS_TYPES = [
   'bungalo'
 ];
 
+var OFFERS_TYPES_DICT = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalo: 'Бунгало'
+};
+
 var OFFERS_CHECKIN_TIMES = [
   '12:00',
   '13:00',
@@ -202,7 +209,7 @@ var renderCard = function (advertItem) {
   card.querySelector('.popup__title').textContent = advertItem.offer.title;
   card.querySelector('.popup__text--address').textContent = advertItem.offer.address;
   card.querySelector('.popup__text--price').textContent = advertItem.offer.price + '₽/ночь';
-  card.querySelector('.popup__type').textContent = advertItem.offer.type;
+  card.querySelector('.popup__type').textContent = OFFERS_TYPES_DICT[advertItem.offer.type];
   card.querySelector('.popup__text--capacity').textContent = advertItem.offer.rooms + ' комнаты для ' + advertItem.offer.guests + ' гостей';
   card.querySelector('.popup__text--time').textContent = 'Заезд после ' + advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
   // card.querySelector('.popup__features')
