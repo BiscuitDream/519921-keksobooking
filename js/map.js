@@ -120,12 +120,12 @@ var getRandomAvatar = function () {
 };
 
 var generateOffersArray = function () {
-  OFFERS_TITLES = shuffleArray(OFFERS_TITLES);
+  var offersTitles = shuffleArray(OFFERS_TITLES.slice());
   var avatarAdresses = getRandomAvatar();
   var adverts = [];
 
   for (var i = 0; i < 8; i++) {
-    OFFERS_PHOTOS = shuffleArray(OFFERS_PHOTOS);
+    var offersPhotos =  shuffleArray(OFFERS_PHOTOS.slice());
     var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
     var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
@@ -134,7 +134,7 @@ var generateOffersArray = function () {
         avatar: avatarAdresses[i]
       },
       offer: {
-        title: OFFERS_TITLES[i],
+        title: offersTitles[i],
         address: locationX + ', ' + locationY,
         price: getRandomInteger(OFFERS_PRICES.min, OFFERS_PRICES.max),
         type: getRandomElement(OFFERS_TYPES),
@@ -144,7 +144,7 @@ var generateOffersArray = function () {
         checkout: getRandomElement(OFFERS_CHECKOUT_TIMES),
         features: getRandomElement(OFFERS_FEATURES),
         description: '',
-        photos: OFFERS_PHOTOS
+        photos: offersPhotos
       },
       location: {
         x: locationX,
