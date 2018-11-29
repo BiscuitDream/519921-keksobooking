@@ -71,6 +71,8 @@ var OFFERS_X = {
 };
 
 var OFFERS_TOTAL = 8;
+var PIN_WIDTH = 50;
+var PIN_HEIGHT = 70;
 
 var map = document.querySelector('.map');
 
@@ -146,20 +148,15 @@ var generateOffersArray = function () {
 
   return adverts;
 };
-// Необходимо подкорректировать размеры
+
 var createPin = function (advertItem) {
   var mapPinTemplate = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
-  console.log(mapPinTemplate);
   var pinItem = mapPinTemplate.cloneNode(true);
-  var xOffset = pinItem.offsetWidth / 2;
-  console.log(xOffset);
-  var yOffset = pinItem.offsetHeight / 2;
-  console.log(yOffset);
 
-  pinItem.style.left = advertItem.location.x - xOffset + 'px';
-  pinItem.style.top = advertItem.location.y - yOffset + 'px';
+  pinItem.style.left = advertItem.location.x - (PIN_WIDTH / 2) + 'px';
+  pinItem.style.top = advertItem.location.y - PIN_HEIGHT + 'px';
   pinItem.querySelector('img').src = advertItem.author.avatar;
   pinItem.querySelector('img').alt = advertItem.offer.title;
 
