@@ -98,12 +98,13 @@ var getRandomInteger = function (min, max) {
 var shuffleArray = function (array) {
   var j;
   var temp;
+  var clonedArray = array.slice();
 
-  for (var i = 0; i < array.length; i++) {
-    j = Math.floor(Math.random() * (array.length - i)) + i;
-    temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+  for (var i = 0; i < clonedArray.length; i++) {
+    j = Math.floor(Math.random() * (clonedArray.length - i)) + i;
+    temp = clonedArray[i];
+    clonedArray[i] = clonedArray[j];
+    clonedArray[j] = temp;
   }
 
   return array;
@@ -120,12 +121,12 @@ var getRandomAvatar = function () {
 };
 
 var generateOffersArray = function () {
-  var offersTitles = shuffleArray(OFFERS_TITLES.slice());
+  var offersTitles = shuffleArray(OFFERS_TITLES);
   var avatarAddresses = getRandomAvatar();
   var adverts = [];
 
   for (var i = 0; i < 8; i++) {
-    var offersPhotos = shuffleArray(OFFERS_PHOTOS.slice());
+    var offersPhotos = shuffleArray(OFFERS_PHOTOS);
     var locationX = getRandomInteger(OFFERS_X.min, OFFERS_X.max);
     var locationY = getRandomInteger(OFFERS_Y.min, OFFERS_Y.max);
 
@@ -143,7 +144,7 @@ var generateOffersArray = function () {
         checkin: getRandomElement(OFFERS_CHECKIN_TIMES),
         checkout: getRandomElement(OFFERS_CHECKOUT_TIMES),
         // копируем массив удобств, перемешиваем, возвращаем копию массива со случайной длиной
-        features: shuffleArray(OFFERS_FEATURES.slice()).slice(0, getRandomInteger(1, OFFERS_FEATURES.length)),
+        features: shuffleArray(OFFERS_FEATURES).slice(0, getRandomInteger(1, OFFERS_FEATURES.length)),
         description: '',
         photos: offersPhotos
       },
