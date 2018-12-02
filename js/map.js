@@ -107,7 +107,7 @@ var shuffleArray = function (array) {
     clonedArray[j] = temp;
   }
 
-  return array;
+  return clonedArray;
 };
 
 var getRandomAvatar = function () {
