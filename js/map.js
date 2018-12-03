@@ -231,3 +231,19 @@ var renderCard = function (advertItem) {
 // renderPins(adverts);
 // var card = renderCard(adverts[0]);
 // map.insertBefore(card, map.querySelector('.map__filters-container'));
+
+var mapPinMain = document.querySelector('.map__pin--main');
+var mapFilters = document.querySelector('.map__filters');
+var adForm = document.querySelector('.ad-form');
+var adFormFieldsets = adForm.querySelectorAll('fieldset');
+
+mapPinMain.addEventListener('mouseup', function () {
+  map.classList.remove('map--faded');
+  adForm.classList.remove('ad-form--disabled');
+  for (var i = 0; i < adFormFieldsets.length; i++) {
+    adFormFieldsets[i].removeAttribute('disabled');
+  }
+  for (var i = 0; i < mapFilters.length; i++) {
+    mapFilters.children[i].removeAttribute('disabled');
+  }
+});
