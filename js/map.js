@@ -237,6 +237,9 @@ var mapFilters = document.querySelector('.map__filters');
 var adForm = document.querySelector('.ad-form');
 var adFormFieldsets = adForm.querySelectorAll('fieldset');
 
+var adressInput = document.querySelector('#address');
+adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
+
 mapPinMain.addEventListener('mouseup', function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
@@ -246,4 +249,6 @@ mapPinMain.addEventListener('mouseup', function () {
   for (var i = 0; i < mapFilters.length; i++) {
     mapFilters.children[i].removeAttribute('disabled');
   }
+
+
 });
