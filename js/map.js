@@ -226,8 +226,8 @@ var renderCard = function (advertItem) {
   return card;
 };
 
-map.classList.remove('map--faded');
-var adverts = generateOffersArray();
-renderPins(adverts);
-var card = renderCard(adverts[0]);
-map.insertBefore(card, map.querySelector('.map__filters-container'));
+// map.classList.remove('map--faded');
+// var adverts = generateOffersArray();
+// renderPins(adverts);
+// var card = renderCard(adverts[0]);
+// map.insertBefore(card, map.querySelector('.map__filters-container'));
