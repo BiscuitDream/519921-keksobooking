@@ -243,7 +243,7 @@ var activatePage = function () {
   for (var i = 0; i < adFormFieldsets.length; i++) {
     adFormFieldsets[i].removeAttribute('disabled');
   }
-  for (var i = 0; i < mapFilters.length; i++) {
+  for (var i = 0; i < mapFilters.children.length; i++) {
     mapFilters.children[i].removeAttribute('disabled');
   }
 };
