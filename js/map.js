@@ -178,6 +178,9 @@ var createPin = function (advertItem) {
   pinItem.querySelector('img').alt = advertItem.offer.title;
 
   pinItem.addEventListener('click', function () {
+    if (map.querySelector('.map__card')) {
+      map.querySelector('.map__card').remove();
+    }
     var card = renderCard(advertItem);
     var cardClose = card.querySelector('.popup__close');
 
