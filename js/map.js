@@ -84,6 +84,12 @@ var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
 var map = document.querySelector('.map');
+var mapPinMain = document.querySelector('.map__pin--main');
+var mapFilters = document.querySelector('.map__filters');
+var adForm = document.querySelector('.ad-form');
+var adFormFieldsets = adForm.querySelectorAll('fieldset');
+var adressInput = document.querySelector('#address');
+var isActivated = false;
 
 var getRandomIndex = function (array) {
   return Math.floor(Math.random() * array.length);
@@ -257,11 +263,6 @@ var renderCard = function (advertItem) {
 // var card = renderCard(adverts[0]); /-------
 // map.insertBefore(card, map.querySelector('.map__filters-container')); /------
 
-var mapPinMain = document.querySelector('.map__pin--main');
-var mapFilters = document.querySelector('.map__filters');
-var adForm = document.querySelector('.ad-form');
-var adFormFieldsets = adForm.querySelectorAll('fieldset');
-
 var activatePage = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
@@ -279,14 +280,11 @@ var activatePage = function () {
   isActivated = true;
 };
 
-var adressInput = document.querySelector('#address');
-adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
-
 var fillAddress = function () {
   adressInput.value = (mapPinMain.offsetLeft + (PIN_WIDTH / 2)) + ', ' + (mapPinMain.offsetTop + PIN_HEIGHT);
 };
 
-var isActivated = false;
+adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
 
 mapPinMain.addEventListener('mouseup', function () {
   if (!isActivated) {
