@@ -270,8 +270,8 @@ var activatePage = function () {
     adFormFieldsets[i].removeAttribute('disabled');
   }
 
-  for (var i = 0; i < mapFilters.children.length; i++) {
-    mapFilters.children[i].removeAttribute('disabled');
+  for (var j = 0; j < mapFilters.children.length; j++) {
+    mapFilters.children[j].removeAttribute('disabled');
   }
 
   var adverts = generateOffersArray();
