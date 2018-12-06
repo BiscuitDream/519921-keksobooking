@@ -80,6 +80,8 @@ var OFFERS_X = {
 var OFFERS_TOTAL = 8;
 var PIN_WIDTH = 50;
 var PIN_HEIGHT = 70;
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
 var map = document.querySelector('.map');
 
@@ -169,6 +171,29 @@ var createPin = function (advertItem) {
   pinItem.querySelector('img').src = advertItem.author.avatar;
   pinItem.querySelector('img').alt = advertItem.offer.title;
 
+  pinItem.addEventListener('click', function () {
+    var card = renderCard(advertItem);
+    var cardClose = card.querySelector('.popup__close');
+
+    map.insertBefore(card, map.querySelector('.map__filters-container'));
+
+    cardClose.addEventListener('click', function () {
+      card.remove();
+    });
+
+    cardClose.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ENTER_KEYCODE) {
+        card.remove();
+      }
+    });
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        card.remove();
+      }
+    });
+  });
+
   return pinItem;
 };
 
@@ -229,8 +254,8 @@ var renderCard = function (advertItem) {
 // map.classList.remove('map--faded'); /------
 // var adverts = generateOffersArray(); /------
 // renderPins(adverts); /-------
-// var card = renderCard(adverts[0]);
-// map.insertBefore(card, map.querySelector('.map__filters-container'));
+// var card = renderCard(adverts[0]); /-------
+// map.insertBefore(card, map.querySelector('.map__filters-container')); /------
 
 var mapPinMain = document.querySelector('.map__pin--main');
 var mapFilters = document.querySelector('.map__filters');
