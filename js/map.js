@@ -173,14 +173,14 @@ var createPin = function (advertItem) {
 };
 
 var renderPins = function (advertsArray) {
-  var mapPins = document.querySelector('.map__pins');
+  var mapPinsContainer = document.querySelector('.map__pins');
   var pinsFragment = document.createDocumentFragment();
 
   advertsArray.forEach(function (item) {
     pinsFragment.appendChild(createPin(item));
   });
 
-  mapPins.appendChild(pinsFragment);
+  mapPinsContainer.appendChild(pinsFragment);
 };
 
 // var createPhotos = function (photos) {
