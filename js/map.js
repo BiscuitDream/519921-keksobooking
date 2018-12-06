@@ -240,6 +240,10 @@ var adFormFieldsets = adForm.querySelectorAll('fieldset');
 var adressInput = document.querySelector('#address');
 adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
 
+var fillAddress = function () {
+  adressInput.value = (mapPinMain.offsetLeft + (PIN_WIDTH / 2)) + ', ' + (mapPinMain.offsetTop + PIN_HEIGHT);
+};
+
 mapPinMain.addEventListener('mouseup', function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
@@ -249,6 +253,5 @@ mapPinMain.addEventListener('mouseup', function () {
   for (var i = 0; i < mapFilters.length; i++) {
     mapFilters.children[i].removeAttribute('disabled');
   }
-
-
+  fillAddress();
 });
