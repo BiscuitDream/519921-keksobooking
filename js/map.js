@@ -226,9 +226,9 @@ var renderCard = function (advertItem) {
   return card;
 };
 
-// map.classList.remove('map--faded');
-// var adverts = generateOffersArray();
-// renderPins(adverts);
+// map.classList.remove('map--faded'); /------
+// var adverts = generateOffersArray(); /------
+// renderPins(adverts); /-------
 // var card = renderCard(adverts[0]);
 // map.insertBefore(card, map.querySelector('.map__filters-container'));
 
@@ -240,12 +240,18 @@ var adFormFieldsets = adForm.querySelectorAll('fieldset');
 var activatePage = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
+
   for (var i = 0; i < adFormFieldsets.length; i++) {
     adFormFieldsets[i].removeAttribute('disabled');
   }
+
   for (var i = 0; i < mapFilters.children.length; i++) {
     mapFilters.children[i].removeAttribute('disabled');
   }
+
+  var adverts = generateOffersArray();
+  renderPins(adverts);
+  isActivated = true;
 };
 
 var adressInput = document.querySelector('#address');
@@ -255,7 +261,11 @@ var fillAddress = function () {
   adressInput.value = (mapPinMain.offsetLeft + (PIN_WIDTH / 2)) + ', ' + (mapPinMain.offsetTop + PIN_HEIGHT);
 };
 
+var isActivated = false;
+
 mapPinMain.addEventListener('mouseup', function () {
-  activatePage();
+  if (!isActivated) {
+    activatePage();
+  }
   fillAddress();
 });
