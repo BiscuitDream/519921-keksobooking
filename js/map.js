@@ -80,8 +80,16 @@ var OFFERS_X = {
 var OFFERS_TOTAL = 8;
 var PIN_WIDTH = 50;
 var PIN_HEIGHT = 70;
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
 var map = document.querySelector('.map');
+var mapPinMain = document.querySelector('.map__pin--main');
+var mapFilters = document.querySelector('.map__filters');
+var adForm = document.querySelector('.ad-form');
+var adFormFieldsets = adForm.querySelectorAll('fieldset');
+var adressInput = document.querySelector('#address');
+var isActivated = false;
 
 var getRandomIndex = function (array) {
   return Math.floor(Math.random() * array.length);
@@ -169,18 +177,44 @@ var createPin = function (advertItem) {
   pinItem.querySelector('img').src = advertItem.author.avatar;
   pinItem.querySelector('img').alt = advertItem.offer.title;
 
+  pinItem.addEventListener('click', function () {
+    if (map.querySelector('.map__card')) {
+      map.querySelector('.map__card').remove();
+    }
+    var card = renderCard(advertItem);
+    var cardClose = card.querySelector('.popup__close');
+
+    map.insertBefore(card, map.querySelector('.map__filters-container'));
+
+    cardClose.addEventListener('click', function () {
+      card.remove();
+    });
+
+    cardClose.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ENTER_KEYCODE) {
+        card.remove();
+      }
+    });
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        card.remove();
+      }
+    });
+  });
+
   return pinItem;
 };
 
 var renderPins = function (advertsArray) {
-  var mapPins = document.querySelector('.map__pins');
+  var mapPinsContainer = document.querySelector('.map__pins');
   var pinsFragment = document.createDocumentFragment();
 
   advertsArray.forEach(function (item) {
     pinsFragment.appendChild(createPin(item));
   });
 
-  mapPins.appendChild(pinsFragment);
+  mapPinsContainer.appendChild(pinsFragment);
 };
 
 // var createPhotos = function (photos) {
@@ -226,8 +260,38 @@ var renderCard = function (advertItem) {
   return card;
 };
 
-map.classList.remove('map--faded');
-var adverts = generateOffersArray();
-renderPins(adverts);
-var card = renderCard(adverts[0]);
-map.insertBefore(card, map.querySelector('.map__filters-container'));
+// map.classList.remove('map--faded'); /------
+// var adverts = generateOffersArray(); /------
+// renderPins(adverts); /-------
+// var card = renderCard(adverts[0]); /-------
+// map.insertBefore(card, map.querySelector('.map__filters-container')); /------
+
+var activatePage = function () {
+  map.classList.remove('map--faded');
+  adForm.classList.remove('ad-form--disabled');
+
+  for (var i = 0; i < adFormFieldsets.length; i++) {
+    adFormFieldsets[i].removeAttribute('disabled');
+  }
+
+  for (var j = 0; j < mapFilters.children.length; j++) {
+    mapFilters.children[j].removeAttribute('disabled');
+  }
+
+  var adverts = generateOffersArray();
+  renderPins(adverts);
+  isActivated = true;
+};
+
+var fillAddress = function () {
+  adressInput.value = (mapPinMain.offsetLeft + (PIN_WIDTH / 2)) + ', ' + (mapPinMain.offsetTop + PIN_HEIGHT);
+};
+
+adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
+
+mapPinMain.addEventListener('mouseup', function () {
+  if (!isActivated) {
+    activatePage();
+  }
+  fillAddress();
+});
