@@ -295,3 +295,27 @@ mapPinMain.addEventListener('mouseup', function () {
   }
   fillAddress();
 });
+
+
+var titleInput = adForm.querySelector('#title');
+
+titleInput.addEventListener('invalid', function () {
+  if (titleInput.validity.tooShort) {
+    titleInput.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+  } else if (titleInput.validity.tooLong) {
+    titleInput.setCustomValidity('Заголовок объявления не должен превышать 100 символов');
+  } else if (titleInput.validity.valueMissing) {
+    titleInput.setCustomValidity('Обязательное поле');
+  } else {
+    titleInput.setCustomValidity('');
+  }
+});
+
+titleInput.addEventListener('input', function (evt) {
+  var target = evt.target;
+  if (target.value.length < 30) {
+    target.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+  } else {
+    target.setCustomValidity('');
+  }
+});
