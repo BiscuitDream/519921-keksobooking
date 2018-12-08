@@ -371,3 +371,31 @@ timeInSelect.addEventListener('change', function () {
 timeOutSelect.addEventListener('change', function () {
   timeInSelect.selectedIndex = timeOutSelect.selectedIndex;
 });
+
+
+var numberOfRoomsSelect = adForm.querySelector('#room_number');
+var capacitySelect = adForm.querySelector('#capacity');
+
+numberOfRoomsSelect.addEventListener('change', function () {
+  if (numberOfRoomsSelect.value === '1') {
+    capacitySelect.options[0].disabled = true;
+    capacitySelect.options[1].disabled = true;
+    capacitySelect.options[2].disabled = false;
+    capacitySelect.options[3].disabled = true;
+  } else if (numberOfRoomsSelect.value === '2') {
+    capacitySelect.options[0].disabled = true;
+    capacitySelect.options[1].disabled = false;
+    capacitySelect.options[2].disabled = false;
+    capacitySelect.options[3].disabled = true;
+  } else if (numberOfRoomsSelect.value === '3') {
+    capacitySelect.options[0].disabled = false;
+    capacitySelect.options[1].disabled = false;
+    capacitySelect.options[2].disabled = false;
+    capacitySelect.options[3].disabled = true;
+  } else if (numberOfRoomsSelect.value === '100') {
+    capacitySelect.options[0].disabled = true;
+    capacitySelect.options[1].disabled = true;
+    capacitySelect.options[2].disabled = true;
+    capacitySelect.options[3].disabled = false;
+  }
+});
