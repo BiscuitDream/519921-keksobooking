@@ -319,3 +319,27 @@ titleInput.addEventListener('input', function (evt) {
     target.setCustomValidity('');
   }
 });
+
+
+var MIN_BUNGALO_PRICE = 0;
+var MIN_FLAT_PRICE = 1000;
+var MIN_HOUSE_PRICE = 5000;
+var MIN_PALACE_PRICE = 10000;
+var buildingTypeSelect = adForm.querySelector('#type');
+var PricePerNightInput = adForm.querySelector('#price');
+
+buildingTypeSelect.addEventListener('change', function () {
+  if (buildingTypeSelect.value === 'bungalo') {
+    PricePerNightInput.setAttribute('min', MIN_BUNGALO_PRICE);
+    PricePerNightInput.placeholder = MIN_BUNGALO_PRICE;
+  } else if (buildingTypeSelect.value === 'flat') {
+    PricePerNightInput.setAttribute('min', MIN_FLAT_PRICE);
+    PricePerNightInput.placeholder = MIN_FLAT_PRICE;
+  } else if (buildingTypeSelect.value === 'house') {
+    PricePerNightInput.setAttribute('min', MIN_HOUSE_PRICE);
+    PricePerNightInput.placeholder = MIN_HOUSE_PRICE;
+  } else if (buildingTypeSelect.value === 'palace') {
+    PricePerNightInput.setAttribute('min', MIN_PALACE_PRICE);
+    PricePerNightInput.placeholder = MIN_PALACE_PRICE;
+  }
+});
