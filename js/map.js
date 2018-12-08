@@ -359,3 +359,15 @@ PricePerNightInput.addEventListener('input', function () {
     PricePerNightInput.setCustomValidity('');
   }
 });
+
+
+var timeInSelect = adForm.querySelector('#timein');
+var timeOutSelect = adForm.querySelector('#timeout');
+
+timeInSelect.addEventListener('change', function () {
+  timeOutSelect.selectedIndex = timeInSelect.selectedIndex;
+});
+
+timeOutSelect.addEventListener('change', function () {
+  timeInSelect.selectedIndex = timeOutSelect.selectedIndex;
+});
