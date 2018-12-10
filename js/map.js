@@ -376,7 +376,7 @@ timeOutSelect.addEventListener('change', function () {
 var numberOfRoomsSelect = adForm.querySelector('#room_number');
 var capacitySelect = adForm.querySelector('#capacity');
 
-numberOfRoomsSelect.addEventListener('change', function () {
+var onNumberOfRoomsSelectChange = function () {
   switch (numberOfRoomsSelect.value) {
     case '1':
       capacitySelect.options[0].disabled = true;
@@ -415,4 +415,6 @@ numberOfRoomsSelect.addEventListener('change', function () {
       }
       break;
   }
-});
+};
+
+numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
