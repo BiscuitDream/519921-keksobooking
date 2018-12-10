@@ -382,20 +382,24 @@ numberOfRoomsSelect.addEventListener('change', function () {
     capacitySelect.options[1].disabled = true;
     capacitySelect.options[2].disabled = false;
     capacitySelect.options[3].disabled = true;
+    capacitySelect.selectedIndex = 2;
   } else if (numberOfRoomsSelect.value === '2') {
     capacitySelect.options[0].disabled = true;
     capacitySelect.options[1].disabled = false;
     capacitySelect.options[2].disabled = false;
     capacitySelect.options[3].disabled = true;
+    capacitySelect.selectedIndex = 2;
   } else if (numberOfRoomsSelect.value === '3') {
     capacitySelect.options[0].disabled = false;
     capacitySelect.options[1].disabled = false;
     capacitySelect.options[2].disabled = false;
     capacitySelect.options[3].disabled = true;
+    capacitySelect.selectedIndex = 2;
   } else if (numberOfRoomsSelect.value === '100') {
     capacitySelect.options[0].disabled = true;
     capacitySelect.options[1].disabled = true;
     capacitySelect.options[2].disabled = true;
     capacitySelect.options[3].disabled = false;
+    capacitySelect.selectedIndex = 3;
   }
 });
