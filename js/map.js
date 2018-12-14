@@ -289,12 +289,12 @@ var fillAddress = function () {
 
 adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + mapPinMain.offsetHeight);
 
-mapPinMain.addEventListener('mouseup', function () {
-  if (!isActivated) {
-    activatePage();
-  }
-  fillAddress();
-});
+// mapPinMain.addEventListener('mouseup', function () {
+//   if (!isActivated) {
+//     activatePage();
+//   }
+//   fillAddress();
+// });
 
 
 var titleInput = adForm.querySelector('#title');
@@ -486,6 +486,10 @@ mapPinMain.addEventListener('mousedown', function (evt) {
 
   var onMouseUp = function (upEvt) {
     upEvt.preventDefault();
+    if (!isActivated) {
+      activatePage();
+    }
+    fillAddress();
 
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', onMouseUp);
