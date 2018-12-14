@@ -482,6 +482,7 @@ mapPinMain.addEventListener('mousedown', function (evt) {
 
     mapPinMain.style.left = mapPinMainCoords.left + 'px';
     mapPinMain.style.top = mapPinMainCoords.top + 'px';
+    fillAddress();
   };
 
   var onMouseUp = function (upEvt) {
