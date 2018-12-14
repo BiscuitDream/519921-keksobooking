@@ -284,10 +284,10 @@ var activatePage = function () {
 };
 
 var fillAddress = function () {
-  adressInput.value = (mapPinMain.offsetLeft + (PIN_WIDTH / 2)) + ', ' + (mapPinMain.offsetTop + PIN_HEIGHT);
+  adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + mapPinMain.offsetHeight);
 };
 
-adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + (mapPinMain.offsetHeight / 2));
+adressInput.value = (mapPinMain.offsetLeft + (mapPinMain.offsetWidth / 2)) + ', ' + (mapPinMain.offsetTop + mapPinMain.offsetHeight);
 
 mapPinMain.addEventListener('mouseup', function () {
   if (!isActivated) {
@@ -421,8 +421,25 @@ numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
 
 // drag-n-drop
+// pinItem.style.left = advertItem.location.x - (PIN_WIDTH / 2) + 'px';
+// pinItem.style.top = advertItem.location.y - PIN_HEIGHT + 'px';
+var mapField = document.querySelector('.map__pins');
+
 mapPinMain.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
+  console.log(evt);
+
+  // координаты поля относительно окна
+  var mapFieldCoords = mapField.getBoundingClientRect();
+  console.log(mapFieldCoords);
+
+  // координаты левого верхнего внутреннего угла поля
+  var mapFieldInnerCoords = {
+    top: mapFieldCoords.top + mapField.clientTop,
+    left: mapFieldCoords.left + mapField.clientLeft
+  };
+  console.log(mapFieldInnerCoords);
+
 
   var startCoords = {
     x: evt.clientX,
@@ -441,6 +458,13 @@ mapPinMain.addEventListener('mousedown', function (evt) {
       x: moveEvt.clientX,
       y: moveEvt.clientY
     };
+
+    // mapPinMainCoords = {
+    //   left: (mapPinMain.offsetLeft - shift.x),
+    //   top: (mapPinMain.offsetTop - shift.y)
+    // };
+
+    // if (mapPinMainCoords.left + )
 
     mapPinMain.style.left = (mapPinMain.offsetLeft - shift.x) + 'px';
     mapPinMain.style.top = (mapPinMain.offsetTop - shift.y) + 'px';
