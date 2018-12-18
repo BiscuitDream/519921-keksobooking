@@ -122,6 +122,14 @@
 
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
+  // Отправка данных на сервер
+  adForm.addEventListener('submit', function (evt) {
+    window.upload(new FormData(adForm), function (response) {
+      console.log('Форма отправлена');
+    });
+    evt.preventDefault();
+  });
+
   window.form = {
     adForm: adForm
   };
