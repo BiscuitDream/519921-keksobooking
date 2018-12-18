@@ -21,7 +21,7 @@
       mapFilters.children[j].removeAttribute('disabled');
     }
 
-    var adverts = window.date.generateOffersArray();
+    var adverts = window.data.generateOffersArray();
     window.pin.renderPins(adverts);
     isActivated = true;
   };
@@ -63,17 +63,17 @@
         top: (mapPinMain.offsetTop - shift.y)
       };
 
-      if (mapPinMainCoords.left + pinWidth / 2 < window.date.OFFERS_X.min) {
-        mapPinMainCoords.left = window.date.OFFERS_X.min - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 < window.data.OFFERS_X.min) {
+        mapPinMainCoords.left = window.data.OFFERS_X.min - (pinWidth / 2);
       }
-      if (mapPinMainCoords.left + pinWidth / 2 > window.date.OFFERS_X.max) {
-        mapPinMainCoords.left = window.date.OFFERS_X.max - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 > window.data.OFFERS_X.max) {
+        mapPinMainCoords.left = window.data.OFFERS_X.max - (pinWidth / 2);
       }
-      if (mapPinMainCoords.top + pinHeight < window.date.OFFERS_Y.min) {
-        mapPinMainCoords.top = window.date.OFFERS_Y.min - pinHeight;
+      if (mapPinMainCoords.top + pinHeight < window.data.OFFERS_Y.min) {
+        mapPinMainCoords.top = window.data.OFFERS_Y.min - pinHeight;
       }
-      if (mapPinMainCoords.top + pinHeight > window.date.OFFERS_Y.max) {
-        mapPinMainCoords.top = window.date.OFFERS_Y.max - pinHeight;
+      if (mapPinMainCoords.top + pinHeight > window.data.OFFERS_Y.max) {
+        mapPinMainCoords.top = window.data.OFFERS_Y.max - pinHeight;
       }
 
       mapPinMain.style.left = mapPinMainCoords.left + 'px';

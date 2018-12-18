@@ -149,7 +149,7 @@
     return adverts;
   };
 
-  window.date = {
+  window.data = {
     generateOffersArray: generateOffersArray,
     OFFERS_Y: OFFERS_Y,
     OFFERS_X: OFFERS_X
