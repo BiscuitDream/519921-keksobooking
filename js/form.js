@@ -124,7 +124,7 @@
 
   // Отправка данных на сервер
   adForm.addEventListener('submit', function (evt) {
-    window.upload(new FormData(adForm), function (response) {
+    window.backend.upload(new FormData(adForm), function (response) {
       console.log('Форма отправлена');
     });
     evt.preventDefault();

@@ -9,6 +9,11 @@
   var addressInput = document.querySelector('#address');
   var isActivated = false;
 
+  var onSuccessLoad = function (array) {
+    var adverts = array.slice();
+    window.pin.renderPins(adverts);
+  };
+
   var activatePage = function () {
     map.classList.remove('map--faded');
     window.form.adForm.classList.remove('ad-form--disabled');
@@ -21,9 +26,10 @@
       mapFilters.children[j].removeAttribute('disabled');
     }
 
-    var adverts = window.data.generateOffersArray();
-    window.pin.renderPins(adverts);
+    // var adverts = window.data.generateOffersArray();
+    // window.pin.renderPins(adverts);
     isActivated = true;
+    window.backend.load(onSuccessLoad);
   };
 
   var fillAddress = function () {
