@@ -18,7 +18,6 @@
     var errorTemplate = document.querySelector('#error').content.querySelector('.error');
     var errorBlock = errorTemplate.cloneNode(true);
     var message = errorBlock.querySelector('.error__message');
-    // var button = errorBlock.querySelector('.error__button');
 
     message.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', errorBlock);

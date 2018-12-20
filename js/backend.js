@@ -13,14 +13,14 @@
       if (xhr.status === 200) {
         onLoad(xhr.response);
       } else {
-        onError('Статус ответа: ' + xhr.status + '' + xhr.statusText);
+        onError('Статус ответа: ' + xhr.status + '' + xhr.statusText + ' .Перезапустите страницу');
       }
     });
     xhr.addEventListener('error', function () {
-      onError('Произошла ошибка соединения');
+      onError('Произошла ошибка соединения' + ' .Перезапустите страницу');
     });
     xhr.addEventListener('timeout', function () {
-      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс' + ' .Перезапустите страницу');
     });
 
     xhr.timeout = 3000; // 3s
