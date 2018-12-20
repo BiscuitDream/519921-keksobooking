@@ -123,10 +123,26 @@
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
   // Отправка данных на сервер
+  var onSuccessUpload = function (xhr) {
+    console.log(xhr.status);
+    console.log(xhr.response);
+  };
+
+  var onErrorUpload = function (errorMessage) {
+    var errorTemplate = document.querySelector('#error').content.querySelector('.error');
+    var errorBlock = errorTemplate.cloneNode(true);
+    var message = errorBlock.querySelector('.error__message');
+
+    message.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', errorBlock);
+
+    setTimeout(function () {
+      errorBlock.remove();
+    }, 3500);
+  };
+
   adForm.addEventListener('submit', function (evt) {
-    window.backend.upload(new FormData(adForm), function (response) {
-      console.log('Форма отправлена');
-    });
+    window.backend.upload(new FormData(adForm), onSuccessUpload, onErrorUpload);
     evt.preventDefault();
   });
 
