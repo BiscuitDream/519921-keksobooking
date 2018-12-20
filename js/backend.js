@@ -9,7 +9,7 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      console.log(xhr.response);
+      // console.log(xhr.response);
       if (xhr.status === 200) {
         onLoad(xhr.response);
       } else {

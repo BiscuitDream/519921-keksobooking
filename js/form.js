@@ -123,9 +123,9 @@
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
   // Отправка данных на сервер
-  var onSuccessUpload = function (xhr) {
-    console.log(xhr.status);
-    console.log(xhr.response);
+  var onSuccessUpload = function (/* xhr */) {
+    // console.log(xhr.status);
+    // console.log(xhr.response);
     adForm.reset();
   };
 
