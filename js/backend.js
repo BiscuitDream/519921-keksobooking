@@ -23,7 +23,7 @@
       onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000; // 10s
+    xhr.timeout = 3000; // 3s
     xhr.open('GET', URL_LOAD);
     xhr.send();
 

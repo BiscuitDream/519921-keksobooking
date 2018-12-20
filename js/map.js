@@ -14,6 +14,16 @@
     window.pin.renderPins(adverts);
   };
 
+  var onErrorLoad = function (errorMessage) {
+    var errorTemplate = document.querySelector('#error').content.querySelector('.error');
+    var errorBlock = errorTemplate.cloneNode(true);
+    var message = errorBlock.querySelector('.error__message');
+    // var button = errorBlock.querySelector('.error__button');
+
+    message.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', errorBlock);
+  };
+
   var activatePage = function () {
     map.classList.remove('map--faded');
     window.form.adForm.classList.remove('ad-form--disabled');
@@ -29,7 +39,7 @@
     // var adverts = window.data.generateOffersArray();
     // window.pin.renderPins(adverts);
     isActivated = true;
-    window.backend.load(onSuccessLoad);
+    window.backend.load(onSuccessLoad, onErrorLoad);
   };
 
   var fillAddress = function () {
