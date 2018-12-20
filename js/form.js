@@ -126,6 +126,7 @@
   var onSuccessUpload = function (xhr) {
     console.log(xhr.status);
     console.log(xhr.response);
+    adForm.reset();
   };
 
   var onErrorUpload = function (errorMessage) {
