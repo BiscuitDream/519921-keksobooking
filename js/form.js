@@ -122,11 +122,18 @@
 
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
-  // Отправка данных на сервер
-  var onSuccessUpload = function (/* xhr */) {
-    // console.log(xhr.status);
-    // console.log(xhr.response);
+  var deactivatePage = function () {
     adForm.reset();
+    window.filtration.removeAllPins();
+    window.map.map.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
+    window.isActivated = false;
+    window.card.removeCard();
+  };
+
+  // Отправка данных на сервер
+  var onSuccessUpload = function () {
+    deactivatePage();
 
     var successTemplate = document.querySelector('#success')
         .content
@@ -138,7 +145,6 @@
         successBlock.remove();
       }
     });
-
     document.addEventListener('click', function () {
       successBlock.remove();
     });

@@ -7,7 +7,7 @@
   var mapFilters = document.querySelector('.map__filters');
   var adFormFieldsets = window.form.adForm.querySelectorAll('fieldset');
   var addressInput = document.querySelector('#address');
-  var isActivated = false;
+  window.isActivated = false;
 
   var onSuccessLoad = function (array) {
     window.adverts = array.slice();
@@ -38,7 +38,7 @@
 
     // var adverts = window.data.generateOffersArray();
     // window.pin.renderPins(adverts);
-    isActivated = true;
+    window.isActivated = true;
     window.backend.load(onSuccessLoad, onErrorLoad);
   };
 
@@ -99,7 +99,7 @@
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
-      if (!isActivated) {
+      if (!window.isActivated) {
         activatePage();
       }
       fillAddress();
