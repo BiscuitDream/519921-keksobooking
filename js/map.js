@@ -2,6 +2,16 @@
 // модуль, который управляет карточками объявлений и пинами: добавляет на страницу нужную карточку, отрисовывает пины и осуществляет взаимодействие карточки и метки на карте;
 
 (function () {
+  var OFFERS_Y = {
+    min: 130,
+    max: 630
+  };
+
+  var OFFERS_X = {
+    min: 0,
+    max: document.querySelector('.map__pins').clientWidth
+  };
+
   var map = document.querySelector('.map');
   var mapPinMain = document.querySelector('.map__pin--main');
   var mapFilters = document.querySelector('.map__filters');
@@ -36,8 +46,6 @@
       mapFilters.children[j].removeAttribute('disabled');
     }
 
-    // var adverts = window.data.generateOffersArray();
-    // window.pin.renderPins(adverts);
     window.isActivated = true;
     window.backend.load(onSuccessLoad, onErrorLoad);
   };
@@ -51,7 +59,6 @@
   // drag-n-drop
   mapPinMain.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
-    // console.log(evt);
 
     var pinWidth = mapPinMain.offsetWidth;
     var pinHeight = mapPinMain.offsetHeight;
@@ -79,17 +86,17 @@
         top: (mapPinMain.offsetTop - shift.y)
       };
 
-      if (mapPinMainCoords.left + pinWidth / 2 < window.data.OFFERS_X.min) {
-        mapPinMainCoords.left = window.data.OFFERS_X.min - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 < OFFERS_X.min) {
+        mapPinMainCoords.left = OFFERS_X.min - (pinWidth / 2);
       }
-      if (mapPinMainCoords.left + pinWidth / 2 > window.data.OFFERS_X.max) {
-        mapPinMainCoords.left = window.data.OFFERS_X.max - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 > OFFERS_X.max) {
+        mapPinMainCoords.left = OFFERS_X.max - (pinWidth / 2);
       }
-      if (mapPinMainCoords.top + pinHeight < window.data.OFFERS_Y.min) {
-        mapPinMainCoords.top = window.data.OFFERS_Y.min - pinHeight;
+      if (mapPinMainCoords.top + pinHeight < OFFERS_Y.min) {
+        mapPinMainCoords.top = OFFERS_Y.min - pinHeight;
       }
-      if (mapPinMainCoords.top + pinHeight > window.data.OFFERS_Y.max) {
-        mapPinMainCoords.top = window.data.OFFERS_Y.max - pinHeight;
+      if (mapPinMainCoords.top + pinHeight > OFFERS_Y.max) {
+        mapPinMainCoords.top = OFFERS_Y.max - pinHeight;
       }
 
       mapPinMain.style.left = mapPinMainCoords.left + 'px';
