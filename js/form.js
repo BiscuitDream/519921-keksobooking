@@ -122,6 +122,54 @@
 
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
+  var deactivatePage = function () {
+    adForm.reset();
+    window.filtration.removeAllPins();
+    window.map.map.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
+    window.isActivated = false;
+    window.card.removeCard();
+  };
+
+  // Отправка данных на сервер
+  var onSuccessUpload = function () {
+    deactivatePage();
+
+    var successTemplate = document.querySelector('#success')
+        .content
+        .querySelector('.success');
+    var successBlock = successTemplate.cloneNode(true);
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === 27) {
+        successBlock.remove();
+      }
+    });
+    document.addEventListener('click', function () {
+      successBlock.remove();
+    });
+
+    document.body.insertAdjacentElement('afterbegin', successBlock);
+  };
+
+  var onErrorUpload = function (errorMessage) {
+    var errorTemplate = document.querySelector('#error').content.querySelector('.error');
+    var errorBlock = errorTemplate.cloneNode(true);
+    var message = errorBlock.querySelector('.error__message');
+
+    message.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', errorBlock);
+
+    setTimeout(function () {
+      errorBlock.remove();
+    }, 3500);
+  };
+
+  adForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(adForm), onSuccessUpload, onErrorUpload);
+    evt.preventDefault();
+  });
+
   window.form = {
     adForm: adForm
   };
