@@ -10,8 +10,9 @@
   var isActivated = false;
 
   var onSuccessLoad = function (array) {
-    var adverts = array.slice();
-    window.pin.renderPins(adverts);
+    window.adverts = array.slice();
+    var slicedAdverts = window.adverts.slice(0, window.filtration.NUMBER_OF_PINS);
+    window.pin.renderPins(slicedAdverts);
   };
 
   var onErrorLoad = function (errorMessage) {

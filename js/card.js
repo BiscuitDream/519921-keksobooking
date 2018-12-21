@@ -35,8 +35,13 @@
 
     return card;
   };
+  var removeCard = function () {
+    var card = document.querySelector('.map').querySelector('.map__card.popup');
+    card.remove();
+  };
 
   window.card = {
-    renderCard: renderCard
+    renderCard: renderCard,
+    removeCard: removeCard
   };
 })();
