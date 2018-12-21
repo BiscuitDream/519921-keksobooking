@@ -37,7 +37,9 @@
   };
   var removeCard = function () {
     var card = document.querySelector('.map').querySelector('.map__card.popup');
-    card.remove();
+    if (card) {
+      card.remove();
+    }
   };
 
   window.card = {

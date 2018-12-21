@@ -127,6 +127,23 @@
     // console.log(xhr.status);
     // console.log(xhr.response);
     adForm.reset();
+
+    var successTemplate = document.querySelector('#success')
+        .content
+        .querySelector('.success');
+    var successBlock = successTemplate.cloneNode(true);
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === 27) {
+        successBlock.remove();
+      }
+    });
+
+    document.addEventListener('click', function () {
+      successBlock.remove();
+    });
+
+    document.body.insertAdjacentElement('afterbegin', successBlock);
   };
 
   var onErrorUpload = function (errorMessage) {
