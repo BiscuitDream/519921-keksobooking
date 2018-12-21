@@ -31,37 +31,37 @@
   var MIN_HOUSE_PRICE = 5000;
   var MIN_PALACE_PRICE = 10000;
   var buildingTypeSelect = adForm.querySelector('#type');
-  var PricePerNightInput = adForm.querySelector('#price');
+  var pricePerNightInput = adForm.querySelector('#price');
 
   buildingTypeSelect.addEventListener('change', function () {
     if (buildingTypeSelect.value === 'bungalo') {
-      PricePerNightInput.setAttribute('min', MIN_BUNGALO_PRICE);
-      PricePerNightInput.placeholder = MIN_BUNGALO_PRICE;
+      pricePerNightInput.setAttribute('min', MIN_BUNGALO_PRICE);
+      pricePerNightInput.placeholder = MIN_BUNGALO_PRICE;
     } else if (buildingTypeSelect.value === 'flat') {
-      PricePerNightInput.setAttribute('min', MIN_FLAT_PRICE);
-      PricePerNightInput.placeholder = MIN_FLAT_PRICE;
+      pricePerNightInput.setAttribute('min', MIN_FLAT_PRICE);
+      pricePerNightInput.placeholder = MIN_FLAT_PRICE;
     } else if (buildingTypeSelect.value === 'house') {
-      PricePerNightInput.setAttribute('min', MIN_HOUSE_PRICE);
-      PricePerNightInput.placeholder = MIN_HOUSE_PRICE;
+      pricePerNightInput.setAttribute('min', MIN_HOUSE_PRICE);
+      pricePerNightInput.placeholder = MIN_HOUSE_PRICE;
     } else if (buildingTypeSelect.value === 'palace') {
-      PricePerNightInput.setAttribute('min', MIN_PALACE_PRICE);
-      PricePerNightInput.placeholder = MIN_PALACE_PRICE;
+      pricePerNightInput.setAttribute('min', MIN_PALACE_PRICE);
+      pricePerNightInput.placeholder = MIN_PALACE_PRICE;
     }
   });
 
-  PricePerNightInput.addEventListener('input', function () {
-    if (PricePerNightInput.validity.valueMissing) {
-      PricePerNightInput.setCustomValidity('Обязательное поле');
-    } else if (buildingTypeSelect.value === 'bungalo' && PricePerNightInput.value < MIN_BUNGALO_PRICE) {
-      PricePerNightInput.setCustomValidity('Цена за бунгало должна превышать 0Р.');
-    } else if (buildingTypeSelect.value === 'flat' && PricePerNightInput.value < MIN_FLAT_PRICE) {
-      PricePerNightInput.setCustomValidity('Цена за квартиру должна превышать 999Р.');
-    } else if (buildingTypeSelect.value === 'house' && PricePerNightInput.value < MIN_HOUSE_PRICE) {
-      PricePerNightInput.setCustomValidity('Цена за дом должна превышать 4999Р.');
-    } else if (buildingTypeSelect.value === 'palace' && PricePerNightInput.value < MIN_PALACE_PRICE) {
-      PricePerNightInput.setCustomValidity('Цена за дворец должна превышать 9999Р.');
+  pricePerNightInput.addEventListener('input', function () {
+    if (pricePerNightInput.validity.valueMissing) {
+      pricePerNightInput.setCustomValidity('Обязательное поле');
+    } else if (buildingTypeSelect.value === 'bungalo' && pricePerNightInput.value < MIN_BUNGALO_PRICE) {
+      pricePerNightInput.setCustomValidity('Цена за бунгало должна превышать 0Р.');
+    } else if (buildingTypeSelect.value === 'flat' && pricePerNightInput.value < MIN_FLAT_PRICE) {
+      pricePerNightInput.setCustomValidity('Цена за квартиру должна превышать 999Р.');
+    } else if (buildingTypeSelect.value === 'house' && pricePerNightInput.value < MIN_HOUSE_PRICE) {
+      pricePerNightInput.setCustomValidity('Цена за дом должна превышать 4999Р.');
+    } else if (buildingTypeSelect.value === 'palace' && pricePerNightInput.value < MIN_PALACE_PRICE) {
+      pricePerNightInput.setCustomValidity('Цена за дворец должна превышать 9999Р.');
     } else {
-      PricePerNightInput.setCustomValidity('');
+      pricePerNightInput.setCustomValidity('');
     }
   });
 
