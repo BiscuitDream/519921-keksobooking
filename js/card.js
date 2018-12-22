@@ -2,7 +2,7 @@
 // модуль, который отвечает за создание карточки объявлений;
 
 (function () {
-  var OFFERS_TYPES_DICT = {
+  var AccommodationType = {
     palace: 'Дворец',
     flat: 'Квартира',
     house: 'Дом',
@@ -20,7 +20,7 @@
     card.querySelector('.popup__text--address').textContent = advertItem.offer.address;
     card.querySelector('.popup__text--price').textContent = advertItem.offer.price + '\u20BD';
     card.querySelector('.popup__text--price').insertAdjacentHTML('beforeend', '<span>/ночь</span>');
-    card.querySelector('.popup__type').textContent = OFFERS_TYPES_DICT[advertItem.offer.type];
+    card.querySelector('.popup__type').textContent = AccommodationType[advertItem.offer.type];
     card.querySelector('.popup__text--capacity').textContent = advertItem.offer.rooms + ' комнаты для ' + advertItem.offer.guests + ' гостей';
     card.querySelector('.popup__text--time').textContent = 'Заезд после ' + advertItem.offer.checkin + ' выезд до ' + advertItem.offer.checkout;
     card.querySelector('.popup__features').innerHTML = '';
