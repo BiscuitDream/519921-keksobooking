@@ -123,13 +123,29 @@ var MAX_LENGTH_TITLE = 30;
 
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
+  // Функция для подсветки невалидвой формы
+  function colorInvalid(input) {
+    if (input.checkValidity() === false) {
+      input.style.boxShadow = '0 0 5px 1px red';
+    } else {
+      input.style.boxShadow = 'none';
+    }
+  }
+
+  var submitBitton = adForm.querySelector('.ad-form__submit');
+
+  submitBitton.addEventListener('click', function () {
+    colorInvalid(titleInput);
+    colorInvalid(pricePerNightInput);
+  });
+
   var deactivatePage = function () {
     adForm.reset();
     window.filtration.removeAllPins();
-    window.map.map.classList.add('map--faded');
+    window.map.field.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     window.isActivated = false;
-    window.card.removeCard();
+    window.card.remove();
   };
 
   // Отправка данных на сервер

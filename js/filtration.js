@@ -67,7 +67,7 @@
   });
 
   filterPins.addEventListener('change', function () {
-    window.card.removeCard();
+    window.card.remove();
     updatePins();
   });
 
