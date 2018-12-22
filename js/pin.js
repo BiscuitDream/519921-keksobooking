@@ -7,8 +7,8 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  var map = window.map.map;
-  var renderCard = window.card.renderCard;
+  var map = window.map.field;
+  var renderCard = window.card.render;
 
 
   var createPin = function (advertItem) {

@@ -120,6 +120,6 @@
   });
 
   window.map = {
-    map: map
+    field: map
   };
 })();
