@@ -24,4 +24,7 @@
       reader.readAsDataURL(file);
     }
   });
+
+  var photoChooser = document.querySelector('.ad-form__upload input[type=file]');
+  var photoPreview = document.querySelector('.ad-form__photo');
 })();
