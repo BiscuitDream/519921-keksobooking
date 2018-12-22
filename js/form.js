@@ -1,5 +1,6 @@
 'use strict';
 // модуль, который работает с формой объявления.
+var MAX_LENGTH_TITLE = 30;
 
 (function () {
   var adForm = document.querySelector('.ad-form');
@@ -7,7 +8,7 @@
 
   titleInput.addEventListener('invalid', function () {
     if (titleInput.validity.tooShort) {
-      titleInput.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+      titleInput.setCustomValidity('Заголовок объявления должен состоять минимум из ' + MAX_LENGTH_TITLE + ' символов');
     } else if (titleInput.validity.tooLong) {
       titleInput.setCustomValidity('Заголовок объявления не должен превышать 100 символов');
     } else if (titleInput.validity.valueMissing) {
@@ -19,8 +20,8 @@
 
   titleInput.addEventListener('input', function (evt) {
     var target = evt.target;
-    if (target.value.length < 30) {
-      target.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+    if (target.value.length < MAX_LENGTH_TITLE) {
+      target.setCustomValidity('Заголовок объявления должен состоять минимум из ' + MAX_LENGTH_TITLE + ' символов');
     } else {
       target.setCustomValidity('');
     }
