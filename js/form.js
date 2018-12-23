@@ -146,6 +146,7 @@ var MAX_LENGTH_TITLE = 30;
     adForm.classList.add('ad-form--disabled');
     window.isActivated = false;
     window.card.remove();
+    window.uploadPhotos.removeImages();
   };
 
   // Отправка данных на сервер

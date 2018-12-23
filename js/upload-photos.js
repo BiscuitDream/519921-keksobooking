@@ -64,4 +64,17 @@
       }
     });
   });
+
+  var DEFAULT_AVATAR = 'img/muffin-grey.svg';
+
+  var removeImages = function () {
+    if (avatarPreview.src !== DEFAULT_AVATAR) {
+      avatarPreview.src = DEFAULT_AVATAR;
+    }
+    photoPreview.innerHTML = '';
+  };
+
+  window.uploadPhotos = {
+    removeImages: removeImages
+  };
 })();
