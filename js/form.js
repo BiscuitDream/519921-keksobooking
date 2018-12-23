@@ -1,7 +1,7 @@
 'use strict';
 // модуль, который работает с формой объявления.
 var MAX_LENGTH_TITLE = 30;
-var DEFAULT_COORDS = {
+var DefaultCoord = {
   left: 570,
   top: 375
 };
@@ -145,8 +145,8 @@ var DEFAULT_COORDS = {
 
   var resetAddress = function () {
     var mainPin = document.querySelector('.map__pin--main');
-    mainPin.style.left = DEFAULT_COORDS.left + 'px';
-    mainPin.style.top = DEFAULT_COORDS.top + 'px';
+    mainPin.style.left = DefaultCoord.left + 'px';
+    mainPin.style.top = DefaultCoord.top + 'px';
     window.map.fillAddress();
   };
 
