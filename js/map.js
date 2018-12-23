@@ -120,6 +120,7 @@
   });
 
   window.map = {
-    field: map
+    field: map,
+    fillAddress: fillAddress
   };
 })();

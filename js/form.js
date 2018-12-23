@@ -1,6 +1,10 @@
 'use strict';
 // модуль, который работает с формой объявления.
 var MAX_LENGTH_TITLE = 30;
+var DEFAULT_COORDS = {
+  left: 570,
+  top: 375
+};
 
 (function () {
   var adForm = document.querySelector('.ad-form');
@@ -139,12 +143,20 @@ var MAX_LENGTH_TITLE = 30;
     colorInvalid(pricePerNightInput);
   });
 
+  var resetAddress = function () {
+    var mainPin = document.querySelector('.map__pin--main');
+    mainPin.style.left = DEFAULT_COORDS.left + 'px';
+    mainPin.style.top = DEFAULT_COORDS.top + 'px';
+    window.map.fillAddress();
+  };
+
   var deactivatePage = function () {
     adForm.reset();
     window.filtration.removeAllPins();
     window.map.field.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     window.isActivated = false;
+    resetAddress();
     window.card.remove();
     window.uploadPhotos.removeImages();
   };
