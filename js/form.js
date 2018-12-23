@@ -1,5 +1,10 @@
 'use strict';
 // модуль, который работает с формой объявления.
+var MAX_LENGTH_TITLE = 30;
+var DefaultCoord = {
+  left: 570,
+  top: 375
+};
 
 (function () {
   var adForm = document.querySelector('.ad-form');
@@ -7,7 +12,7 @@
 
   titleInput.addEventListener('invalid', function () {
     if (titleInput.validity.tooShort) {
-      titleInput.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+      titleInput.setCustomValidity('Заголовок объявления должен состоять минимум из ' + MAX_LENGTH_TITLE + ' символов');
     } else if (titleInput.validity.tooLong) {
       titleInput.setCustomValidity('Заголовок объявления не должен превышать 100 символов');
     } else if (titleInput.validity.valueMissing) {
@@ -19,8 +24,8 @@
 
   titleInput.addEventListener('input', function (evt) {
     var target = evt.target;
-    if (target.value.length < 30) {
-      target.setCustomValidity('Заголовок объявления должен состоять минимум из 30 символов');
+    if (target.value.length < MAX_LENGTH_TITLE) {
+      target.setCustomValidity('Заголовок объявления должен состоять минимум из ' + MAX_LENGTH_TITLE + ' символов');
     } else {
       target.setCustomValidity('');
     }
@@ -122,13 +127,38 @@
 
   numberOfRoomsSelect.addEventListener('change', onNumberOfRoomsSelectChange);
 
+  // Функция для подсветки невалидвой формы
+  function colorInvalid(input) {
+    if (input.checkValidity() === false) {
+      input.style.boxShadow = '0 0 5px 1px red';
+    } else {
+      input.style.boxShadow = 'none';
+    }
+  }
+
+  var submitBitton = adForm.querySelector('.ad-form__submit');
+
+  submitBitton.addEventListener('click', function () {
+    colorInvalid(titleInput);
+    colorInvalid(pricePerNightInput);
+  });
+
+  var resetAddress = function () {
+    var mainPin = document.querySelector('.map__pin--main');
+    mainPin.style.left = DefaultCoord.left + 'px';
+    mainPin.style.top = DefaultCoord.top + 'px';
+    window.map.fillAddress();
+  };
+
   var deactivatePage = function () {
     adForm.reset();
     window.filtration.removeAllPins();
-    window.map.map.classList.add('map--faded');
+    window.map.field.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     window.isActivated = false;
-    window.card.removeCard();
+    resetAddress();
+    window.card.remove();
+    window.uploadPhotos.removeImages();
   };
 
   // Отправка данных на сервер

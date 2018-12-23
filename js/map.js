@@ -2,12 +2,12 @@
 // модуль, который управляет карточками объявлений и пинами: добавляет на страницу нужную карточку, отрисовывает пины и осуществляет взаимодействие карточки и метки на карте;
 
 (function () {
-  var OFFERS_Y = {
+  var OfferY = {
     min: 130,
     max: 630
   };
 
-  var OFFERS_X = {
+  var OfferX = {
     min: 0,
     max: document.querySelector('.map__pins').clientWidth
   };
@@ -86,17 +86,17 @@
         top: (mapPinMain.offsetTop - shift.y)
       };
 
-      if (mapPinMainCoords.left + pinWidth / 2 < OFFERS_X.min) {
-        mapPinMainCoords.left = OFFERS_X.min - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 < OfferX.min) {
+        mapPinMainCoords.left = OfferX.min - (pinWidth / 2);
       }
-      if (mapPinMainCoords.left + pinWidth / 2 > OFFERS_X.max) {
-        mapPinMainCoords.left = OFFERS_X.max - (pinWidth / 2);
+      if (mapPinMainCoords.left + pinWidth / 2 > OfferX.max) {
+        mapPinMainCoords.left = OfferX.max - (pinWidth / 2);
       }
-      if (mapPinMainCoords.top + pinHeight < OFFERS_Y.min) {
-        mapPinMainCoords.top = OFFERS_Y.min - pinHeight;
+      if (mapPinMainCoords.top + pinHeight < OfferY.min) {
+        mapPinMainCoords.top = OfferY.min - pinHeight;
       }
-      if (mapPinMainCoords.top + pinHeight > OFFERS_Y.max) {
-        mapPinMainCoords.top = OFFERS_Y.max - pinHeight;
+      if (mapPinMainCoords.top + pinHeight > OfferY.max) {
+        mapPinMainCoords.top = OfferY.max - pinHeight;
       }
 
       mapPinMain.style.left = mapPinMainCoords.left + 'px';
@@ -120,6 +120,7 @@
   });
 
   window.map = {
-    map: map
+    field: map,
+    fillAddress: fillAddress
   };
 })();
